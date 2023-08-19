@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @aventure %>
+<div>
+  <%= link_to "Editar aventura", edit_aventure_path(@aventure) %>
+  <%= link_to "Regresar a aventuras", aventures_path %>
+  <%= button_to "Eliminar aventura", @aventure, method: :delete %>
+</div>

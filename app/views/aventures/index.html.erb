@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+<div class= "d-flex justify-content-center">
+  <h1 class= "h1">Crazy 4 Cats</h1>
+</div>
+<div class= "d-flex justify-content-center">
+  <h3>Súmate a esta aventura gatuna</h3>
+</div>
+<div id="aventures">
+  <% @aventures.each do |aventure| %>
+    <%= render aventure %>
+    <p>
+      <%= link_to "Ver la aventura", aventure %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "Una nueva aventura", new_aventure_path %>
