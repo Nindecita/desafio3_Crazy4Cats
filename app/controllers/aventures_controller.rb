@@ -1,6 +1,6 @@
 class AventuresController < ApplicationController
   before_action :set_aventure, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new create edit update destroy]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy show]
   # GET /aventures or /aventures.json
   def index
     @aventures = Aventure.all
@@ -10,6 +10,7 @@ class AventuresController < ApplicationController
   def show
     @comments = @aventure.comments.order(id: :desc)
     @comment = @aventure.comments.build
+    @aventure = Aventure.find(params[:id])
   end
 
   # GET /aventures/new

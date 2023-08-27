@@ -7,20 +7,16 @@
       <div class="d-flex gap-3">
         <li><%= comment.comment %></li>
         <% if comment.anonimus == true %>
-          <li>author: anonimo</li>
+          <li>autor: anonimo</li>
         <% else %>
           <li><%= User.find(comment.user_id).name %></li>
         <% end %>
       </div>
     <% end %>
   </ul>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body card-text">
-      <h4>Déjanos tu comentario</h4>
-      <%= form_with(model: [@aventure, @comment], local: true) do |f| %>
-        <%= f.text_area :comment, :class=>"form-control" %>
-      </div>
-    </div>
+  <h4>Déjanos tu comentario</h4>
+  <%= form_with(model: [@aventure, @comment], local: true) do |f| %>
+    <%= f.text_area :comment, :class=>"form-control" %>
     <%= f.submit 'Agregar comentario' , :class=>"btn bottom"%>
     <label>
       <%= f.check_box :anonimus %>

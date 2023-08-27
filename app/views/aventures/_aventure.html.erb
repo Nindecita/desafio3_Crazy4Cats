@@ -8,15 +8,19 @@
         <div>
           <%= link_to "Ver", aventure, :class=>"btn bottom btn-sm " %>
         </div>
-        <div>
-          <%= link_to "Nueva aventura", new_aventure_path, :class=>"btn bottom btn-sm " %>
-        </div>
-        <div>
-          <%= link_to "Editar", edit_aventure_path(aventure), :class=>"btn bottom btn-sm " %>
-        </div>
-        <div>
-          <%= button_to "Eliminar", aventure, method: :delete, :class=>"btn bottom btn-sm " %>
-        </div>
+        <% if user_signed_in? %>
+          <% if current_user.id == aventure.user_id %>
+            <div>
+              <%= link_to "Nueva aventura", new_aventure_path, :class=>"btn bottom btn-sm " %>
+            </div>
+            <div>
+              <%= link_to "Editar", edit_aventure_path(aventure), :class=>"btn bottom btn-sm " %>
+            </div>
+            <div>
+              <%= button_to "Eliminar", aventure, method: :delete, :class=>"btn bottom btn-sm " %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
