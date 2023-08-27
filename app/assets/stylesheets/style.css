@@ -12,3 +12,20 @@ body{
 .h1{
   color: #00303F;
 }
+
+.bottom{
+  background-color: #7A9D96;
+  color: #DCAE1D !important;
+}
+
+.dropdown-item{
+  color: #DCAE1D !important;
+}
+
+.dropdown-menu{
+  background-color: #00303F !important;
+}
+
+.dropdown-item:hover{
+  background-color: #00303F !important;
+}

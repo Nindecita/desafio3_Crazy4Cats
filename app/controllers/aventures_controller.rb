@@ -8,6 +8,8 @@ class AventuresController < ApplicationController
 
   # GET /aventures/1 or /aventures/1.json
   def show
+    @comments = @aventure.comments.order(id: :desc)
+    @comment = @aventure.comments.build
   end
 
   # GET /aventures/new
@@ -25,7 +27,7 @@ class AventuresController < ApplicationController
     @aventure.user_id = current_user.id
     respond_to do |format|
       if @aventure.save
-        format.html { redirect_to aventure_url(@aventure), notice: "Aventure was successfully created." }
+        format.html { redirect_to aventure_url(@aventure), notice: "La aventura fue creada con éxito." }
         format.json { render :show, status: :created, location: @aventure }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class AventuresController < ApplicationController
   def update
     respond_to do |format|
       if @aventure.update(aventure_params)
-        format.html { redirect_to aventure_url(@aventure), notice: "Aventure was successfully updated." }
+        format.html { redirect_to aventure_url(@aventure), notice: "La aventura fue actualizada con éxito." }
         format.json { render :show, status: :ok, location: @aventure }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class AventuresController < ApplicationController
     @aventure.destroy
 
     respond_to do |format|
-      format.html { redirect_to aventures_url, notice: "Aventure was successfully destroyed." }
+      format.html { redirect_to aventures_url, notice: "La aventura fue eliminada con éxito." }
       format.json { head :no_content }
     end
   end

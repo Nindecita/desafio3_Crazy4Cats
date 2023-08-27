@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_18_221125) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_26_211319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_221125) do
 
   create_table "comments", force: :cascade do |t|
     t.boolean "anonimus", default: false
+    t.string "comment", default: ""
     t.bigint "user_id"
     t.bigint "aventure_id"
     t.datetime "created_at", null: false
@@ -34,13 +35,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_221125) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "comments_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comments_id"], name: "index_likes_on_comments_id"
+    t.index ["user_id", "comments_id"], name: "index_likes_on_user_id_and_comments_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string "name", default: ""
-    t.string "role", default: ""
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,4 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_221125) do
   add_foreign_key "aventures", "users"
   add_foreign_key "comments", "aventures"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "comments", column: "comments_id"
+  add_foreign_key "likes", "users"
 end

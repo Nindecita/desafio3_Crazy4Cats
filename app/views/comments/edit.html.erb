@@ -2,6 +2,6 @@
 <%= render "form", comment: @comment %>
 <br>
 <div>
-  <%= link_to "Ver comentario", @comment %> |
-  <%= link_to "Regresar a comentarios", comments_path %>
+  <%= link_to "Ver comentario", @comment, :class=>"btn bottom" %> |
+  <%= link_to "Regresar a comentarios", comments_path, :class=>"btn bottom" %>
 </div>

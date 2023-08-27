@@ -25,9 +25,9 @@
     <%= f.password_field :current_password, autocomplete: "Contraseña actual" %>
   </div>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualizar", :class=>"btn bottom" %>
   </div>
 <% end %>
 <h3>cancelar mi cuenta</h3>
 <div>¿Descontento? <%= button_to "cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estas seguro?", turbo_confirm: "¿Estas seguro?" }, method: :delete %></div>
-<%= link_to "Regresar", :back %>
+<%= link_to "Regresar", :back, :class=>"btn bottom", :class=>"btn bottom" %>

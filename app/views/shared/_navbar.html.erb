@@ -19,36 +19,35 @@
             <a class="nav-link active navbar" aria-current="page" href="/aventures">Aventuras</a>
           </li>
         <%end%>
-        <li class="nav-item">
-          <li class="nav-item dropdown">
-            <a class="nav-link navbar dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navbar" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-              <% if user_signed_in? %>
-                <%= current_user.email%>
-              <%else%>
-                Iniciar sesión  |  Registrarse
-              <%end%>
-            </a>
-            <ul class="dropdown-menu navbar">
-              <% if user_signed_in? %>
-                <li>
-                  <%= button_to 'Cerrar sesión' , destroy_user_session_path, class: 'dropdown-item navbar' , method:
-                      :delete %>
-                </li>
-              <%else%>
-                <li>
-                  <%= link_to 'Iniciar sesión' , new_user_session_path, class: 'dropdown-item navbar' %>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <%= link_to 'Registrarse' , new_user_registration_path, class: 'dropdown-item navbar' %>
-                </li>
-              <%end%>
-            </ul>
-          </li>
-        </ul>
-      </div>
+            <% if user_signed_in? %>
+              <%= current_user.email%>
+            <%else%>
+              Opciones
+            <%end%>
+          </a>
+          <ul class="dropdown-menu">
+            <% if user_signed_in? %>
+              <li>
+                <%= button_to 'Cerrar sesión' , destroy_user_session_path, class: 'dropdown-item' , method:
+                                :delete %>
+              </li>
+            <%else%>
+              <li>
+                <%= link_to 'Iniciar sesión' , new_user_session_path, class: 'dropdown-item' %>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <%= link_to 'Registrarse' , new_user_registration_path, class: 'dropdown-item' %>
+              </li>
+            <%end%>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>

@@ -1,14 +1,23 @@
 <div id="<%= dom_id aventure %>">
-  <p>
-    <strong>Título:</strong>
-    <%= aventure.title %>
-  </p>
-  <p>
-    <strong>Descripción:</strong>
-    <%= aventure.description %>
-  </p>
-  <p>
-    <strong>Imagen:</strong>
-    <%= aventure.image %>
-  </p>
+  <div class="card" style="width: 18rem;">
+    <%=image_tag aventure.image, :class => "card-img-top"%>
+    <div class="card-body">
+      <h5 class="card-title"><%= aventure.title %></h5>
+      <p class="card-text"><%= aventure.description %></p>
+      <div class="d-flex gap-2">
+        <div>
+          <%= link_to "Ver", aventure, :class=>"btn bottom btn-sm " %>
+        </div>
+        <div>
+          <%= link_to "Nueva aventura", new_aventure_path, :class=>"btn bottom btn-sm " %>
+        </div>
+        <div>
+          <%= link_to "Editar", edit_aventure_path(aventure), :class=>"btn bottom btn-sm " %>
+        </div>
+        <div>
+          <%= button_to "Eliminar", aventure, method: :delete, :class=>"btn bottom btn-sm " %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

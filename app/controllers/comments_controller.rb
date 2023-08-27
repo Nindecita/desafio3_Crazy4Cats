@@ -21,8 +21,9 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
-
+    @aventure = Aventure.find(params[:aventure_id])
+    @comment = @aventure.comments.build(comment_params)
+    @comment.user_id = current_user.id 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
@@ -57,6 +58,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def like
+    @comment = Comment.find(params[:id])
+    @comment.increment!(:likes_count)
+    redirect_to @comment.aventure
+  end
+
+  def dislike
+    @comment = Comment.find(params[:id])
+    @comment.increment!(:dislikes_count)
+    redirect_to @comment.aventure
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
@@ -65,6 +78,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:anonimus)
+      params.require(:comment).permit(:anonimus, :comment)
     end
 end

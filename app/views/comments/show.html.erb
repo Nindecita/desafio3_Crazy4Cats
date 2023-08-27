@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <%= render @comment %>
 <div>
-  <%= link_to "Editar comentario", edit_comment_path(@comment) %> |
-  <%= link_to "Regresar a comentarios", comments_path %>
-  <%= button_to "Eliminar comentario", @comment, method: :delete %>
+  <%= link_to "Editar comentario", edit_comment_path(@comment), :class=>"btn bottom" %> |
+  <%= link_to "Regresar a comentarios", comments_path, :class=>"btn bottom" %>
+  <%= button_to "Eliminar comentario", @comment, method: :delete, :class=>"btn bottom" %>
 </div>

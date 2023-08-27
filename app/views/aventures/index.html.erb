@@ -5,12 +5,11 @@
 <div class= "d-flex justify-content-center">
   <h3>Súmate a esta aventura gatuna</h3>
 </div>
-<div id="aventures">
-  <% @aventures.each do |aventure| %>
-    <%= render aventure %>
-    <p>
-      <%= link_to "Ver la aventura", aventure %>
-    </p>
-  <% end %>
-</div>
-<%= link_to "Una nueva aventura", new_aventure_path %>
+<div id="aventures" class="d-flex flex-wrap">
+  <div id="aventures" class="d-flex flex-wrap">
+    <% @aventures.each do |aventure| %>
+      <div class="col-md-4 mb-4">
+        <%= render aventure %>
+      </div>
+    <% end %>
+  </div>

@@ -6,7 +6,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
   <div class="actions">
-    <%= f.submit "Reenviar instrucciones de confirmación" %>
+    <%= f.submit "Reenviar instrucciones de confirmación", :class=>"btn bottom" %>
   </div>
 <% end %>
 <%= render "devise/shared/links" %>
